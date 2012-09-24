@@ -25,15 +25,15 @@ Spork.prefork do
       # db.collection_names.reject {|c| c =~ /^system/}.each {|c| db.drop_collection c}
     # end
     
-    config.after(:each) do
-        puts "cleaning mongodb...."
-        Mongoid.database.collections.each do |collection|
-          unless collection.name =~ /^system\./
-            collection.remove
-          end
-        end
-        puts "finished cleaning mongodb."
-    end
+    # config.after(:each) do
+        # puts "cleaning mongodb...."
+        # Mongoid.database.collections.each do |collection|
+          # unless collection.name =~ /^system\./
+            # collection.remove
+          # end
+        # end
+        # puts "finished cleaning mongodb."
+    # end
 
     # ## Mock Framework
     #
