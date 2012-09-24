@@ -19,6 +19,22 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   
   RSpec.configure do |config|
+    # config.before(:each) do
+      # db = Mongoid::Config::master
+      # # ignore stuff like system.indexes
+      # db.collection_names.reject {|c| c =~ /^system/}.each {|c| db.drop_collection c}
+    # end
+    
+    config.after(:each) do
+        puts "cleaning mongodb...."
+        Mongoid.database.collections.each do |collection|
+          unless collection.name =~ /^system\./
+            collection.remove
+          end
+        end
+        puts "finished cleaning mongodb."
+    end
+
     # ## Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
