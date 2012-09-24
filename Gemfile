@@ -6,32 +6,20 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
-
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+group :development, :test do
+    gem 'rspec-rails'
+    gem 'watchr'
+    gem 'webrat', ">= 0.7.2"
+    #gem 'mocha'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# spork
+gem 'spork', '~> 0.9.0.rc'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'ci_reporter'
 
-# To use debugger
-# gem 'debugger'
+gem "mongoid", "~> 3.0.6"
+gem 'bson_ext'
