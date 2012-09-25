@@ -46,7 +46,7 @@ describe UsersController do
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
       get :show, {:id => user.to_param}, valid_session
-      assigns(:user).should_not eq(user)
+      assigns(:user).should eq(user)
     end
   end
 
